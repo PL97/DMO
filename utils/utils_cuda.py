@@ -253,7 +253,7 @@ def stochastic_minimizer(func, v_x, eps=1e-1, bound=None, max_rounds=300):
         optim.step()
         
         if count % log_step == 0:
-            print(loss.item(), es.counter, es.min_loss)
+            # print(loss.item(), es.counter, es.min_loss)
             scheduler.step()
             
         cur_val = loss.item()
@@ -296,8 +296,6 @@ def load_features(ds, split, device="cpu", seed=2):
         # exit("dataset not support at this moment!")
 
     ## remove the last layer
-    print(net)
-    asdf
     net = nn.Sequential(*list(net.children())[:-1])
 
     features, labels = [], []

@@ -44,7 +44,7 @@ python FPOR.py --ds wilt --alpha 0.8 --seed 0
 python FROP.py --ds wilt --alpha 0.8 --seed 0
 
 # Optimize F-beta score, using wilt dataset, with a prefix threshold 0f 0.8, using a random seed 0
-python OFBS.py --ds wilt --alpha 0.8 --seed 0
+python OFBS.py --ds wilt --seed 0
 ```
 
 ```bash

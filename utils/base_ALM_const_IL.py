@@ -142,7 +142,7 @@ class base_ALM_const_IL:
             
             self.w.data = stochastic_minimizer(self.lagrangian_helper_w, self.w, eps=0.1).data
             
-            self.write_to_txt("\n\n")
+            # self.write_to_txt("\n\n")
             self.s.data = stochastic_minimizer(self.lagrangian_helper_s, self.s, bound=[0, 1], eps=1).data
             
             self.update_langrangian_multiplier()
@@ -151,17 +151,17 @@ class base_ALM_const_IL:
             cur_vio = np.amax([self.alpha - const, 0])
         
             if cur_vio < best_vio: ## last element in a_c is metric violation value
-                self.write_to_txt(f"case 1: {cur_vio}\t{best_vio}")
-                self.write_to_txt(f"{self.alpha} \t {const}")
+                # self.write_to_txt(f"case 1: {cur_vio}\t{best_vio}")
+                # self.write_to_txt(f"{self.alpha} \t {const}")
                 best_obj = obj
                 best_w = deepcopy(self.w)
                 best_vio = cur_vio
             elif cur_vio == best_vio and best_obj < obj:
-                self.write_to_txt(f"case 2: {obj}\t{best_obj}")
+                # self.write_to_txt(f"case 2: {obj}\t{best_obj}")
                 best_obj = obj
                 best_w = deepcopy(self.w) 
             else:
-                self.write_to_txt("case 3")
+                # self.write_to_txt("case 3")
                 pass
 
 
