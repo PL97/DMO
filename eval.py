@@ -1,5 +1,5 @@
-from base_ALM_const_IL import base_ALM_const_IL
-from utils_cuda import setup, load_data, set_seed, load_features
+from utils.base_ALM_const_IL import base_ALM_const_IL
+from utils.utils_cuda import setup, load_data, set_seed, load_features
 import torch
 import numpy as np
 from utils_cuda import robust_sigmoid
@@ -113,15 +113,8 @@ if __name__ == "__main__":
     bias = True
     ds = args.ds
     device = torch.device("cuda")
-    if args.decouple:
-        train_X, train_y = load_features(ds=ds, split="train", device=device, seed=args.seed)
-    else:
-        train_X, train_y = load_data(ds=ds, split="train", bias=bias, device=device)
-        
-    if args.decouple:
-        test_X, test_y = load_features(ds=ds, split="test", device=device, seed=args.seed)
-    else:
-        test_X, test_y = load_data(ds=ds, split="test", bias=bias, device=device)
+    train_X, train_y = load_data(ds=ds, split="train", bias=bias, device=device)
+    test_X, test_y = load_data(ds=ds, split="test", bias=bias, device=device)
     
     for p in ["FPOR", "FROP", "OFBS"]:
         ws = f"logs/{args.ds}/{p}/{args.seed}/"

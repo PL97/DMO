@@ -1,5 +1,5 @@
-from base_ALM_const_IL import base_ALM_const_IL
-from utils_cuda import setup, load_data, set_seed, stochastic_minimizer, BinaryCrossEntropy, load_features
+from utils.base_ALM_const_IL import base_ALM_const_IL
+from utils.utils_cuda import setup, load_data, set_seed, stochastic_minimizer, BinaryCrossEntropy, load_features
 import torch
 import numpy as np
 from copy import deepcopy
@@ -128,16 +128,10 @@ if __name__ == "__main__":
     bias = True
     ds = args.ds
     device = torch.device("cuda")
-    if args.decouple:
-        X, y = load_features(ds=ds, split="train", device=device, seed=args.seed)
-    else:
-        X, y = load_data(ds=ds, split="train", bias=bias, device=device)
+    X, y = load_data(ds=ds, split="train", bias=bias, device=device)
     
     opt = OFBS(X, y, args.alpha, device, Folding=True, ws=args.ws)
-    if args.decouple:
-        opt.set_workspace(f"logs_decouple/{args.ds}/OFBS/{args.seed}/")
-    else:
-        opt.set_workspace(f"logs/{args.ds}/OFBS/{args.seed}/")
+    opt.set_workspace(f"logs/{args.ds}/OFBS/{args.seed}/")
     if os.path.exists(f"{opt.workspace}/model.npz"):
         exit("model exists")
     w = opt.ALM()

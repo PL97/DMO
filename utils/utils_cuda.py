@@ -10,8 +10,6 @@ import os
 import random
 from torch.optim import Adam, SGD
 from torch.optim import lr_scheduler
-from first_stage.dataloader.eyepacs import get_eyepacs_loaders
-from first_stage.dataloader.Fastloader import FastTensorDataLoader
 from torchvision import models
 import torch.nn as nn
 

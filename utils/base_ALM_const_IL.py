@@ -1,6 +1,6 @@
 import numpy as np
 import torch
-from utils_cuda import warm_start, BinaryCrossEntropy, stochastic_minimizer, robust_sigmoid
+from utils.utils_cuda import warm_start, BinaryCrossEntropy, stochastic_minimizer, robust_sigmoid
 from copy import deepcopy
 import os
 
