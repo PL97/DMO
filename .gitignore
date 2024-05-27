@@ -1,0 +1,13 @@
+*logs*/
+first_stage/
+baseline/
+slurm/
+smooth/
+__pycache__/
+
+*MLP.py
+*.pyc
+*.pt
+*.txt
+*.out
+*.slurm
